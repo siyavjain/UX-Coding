@@ -1,0 +1,120 @@
+<!-- Defines the document type as HTML -->
+<!DOCTYPE html>
+
+<!-- Language set to English -->
+<html lang="en">
+<head>
+    <!-- Defines character encoding for the document -->
+    <meta charset="UTF-8">
+    
+    <!-- Allows responsive behavior for different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Title of the web page shown in the browser tab -->
+    <title>Origami Flow</title>
+
+    <style>
+        /* Sets the background color and centers content */
+        body {
+            font-family: Arial, sans-serif; /* Sets font type */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            background-color: #dfe7fd; /* Light blue background */
+        }
+
+        /* Styles the card with padding, rounded corners, shadow, and text alignment */
+        .emotion-card {
+            background: white; /* Sets backgrounbd to white */
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow effect */
+            text-align: center;
+            width: 320px; /* Fixed width */
+        }
+
+        /* Removes bullet points and padding from the list */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* Styles list items with background color, padding, margin, and rounded corners */
+        li {
+            background: #f0f8ff; /* Light blue shade */
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- A card that provides step-by-step guidance for managing emotions -->
+    <div class="emotion-card">
+        <!-- Displays the persona's name -->
+        <h2 id="persona-name">Hey there!</h2>
+        
+        <!-- Provides an introductory text for emotional guidance -->
+        <p><strong>Let's tackle your emotions together:</strong></p>
+        
+        <!-- An unordered list where JavaScript will insert emotional guidance steps -->
+        <ul id="emotion-steps">
+            <!-- Steps will be added using JavaScript -->
+        </ul>
+    </div>
+
+    <script>
+        // Creates an object representing a persona 
+        let emotionHelper1 = {
+            name: "Sid - The Hot Tempered",
+            steps: [
+                "Take a deep breath and count to five.",
+                "Identify what you're feeling.",
+                "Write it down or draw it out.",
+                "Talk to someone you trust.",
+                "Do a fun or calming activity." 
+            ],
+            // Function returns a guide message with the persona's name
+            guide: function() {
+                return `I'm ${this.name}, and I'm here to help! Let's go through these steps together.`;
+            }
+        };
+
+        // Creates another persona with different emotion
+        let emotionHelper2 = {
+            name: "Matt",
+            steps: [
+                "Identify what is making you feel overwhelmed.",
+                "Break the problem into smaller parts.",
+                "Create a simple plan to tackle one step at a time.",
+                "Seek guidance from a mentor or friend.",
+                "Celebrate small victories along the way." 
+            ],
+            // Function returns a guide message for the second persona
+            guide: function() {
+                return `Hi, I'm ${this.name}, and I'm here to help you manage challenges step by step!`;
+            }
+        };
+        
+        // Updates webpage to display persona names
+        document.getElementById("persona-name").innerText = emotionHelper1.name;
+
+        // Selects list element where emotional steps will be added
+        let stepsList = document.getElementById("emotion-steps");
+
+        // Loops through each step in the first persona's steps and adds it to the list
+        for (let i = 0; i < emotionHelper1.steps.length; i++) {
+            let listItem = document.createElement("li"); // Creates a new list item
+            listItem.textContent = `Step ${i + 1}: ${emotionHelper1.steps[i]}`; // Adds step text
+            stepsList.appendChild(listItem); // Adds item to the list
+        }
+        
+        // Logs the introduction message for the first persona
+        console.log(emotionHelper1.guide());
+
+        // Logs the introduction message for the second persona
+        console.log(emotionHelper2.guide());
+    </script>
+</body>
+</html>

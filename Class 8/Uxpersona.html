@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UX Persona Template</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+.persona-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+</style>
+</head>
+<body>
+<div class="persona-card">
+    <h2 id="persona-name"></h2>
+    <p><strong>Age:</strong> <span id="persona-age"></span></p>
+    <p><strong>Emotions:</strong></p>
+    <ul id="persona-emotions"></ul>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // # Step 1: Define a UX Persona Object
+    let userPersona = {
+        name: "Timmy",
+        age: "8",
+        emotions: ["Angry", "Happy", "Sad"],
+
+        // # Step 2: Create a method to introduce the persona
+        introduce: function() {
+            return `Hi, I'm ${this.name} and I am currently feeling ${this.emotions[0].toLowerCase()}.`;
+        }
+    };
+
+    // # Step 3: Display Persona Details
+    document.getElementById("persona-name").innerText = userPersona.name;
+    document.getElementById("persona-age").innerText = userPersona.age;
+    
+    let emotionsList = document.getElementById("persona-emotions"); // Corrected list reference
+
+    // Loop through emotions and add them to the list
+    for (let i = 0; i < userPersona.emotions.length; i++) {
+        let listItem = document.createElement("li");
+        listItem.textContent = `- ${userPersona.emotions[i]}`; // Fixed incorrect reference
+        emotionsList.appendChild(listItem); // Append correctly
+    }
+
+    console.log(userPersona.introduce()); // Logs introduction message
+});
+</script>
+</body>
+</html>
